@@ -1,0 +1,11 @@
+UI
+1.)Tab layout to display text and graph
+2.)Potentially add scrollable text
+3.)Graph of hash/time
+4.)Change main
+    a.)Move button
+    b.)Optional:
+        1.Create options menu
+        2.Create checkView to select algorithms to view
+5.)Optional:
+    a.)Check password strength return result tab
