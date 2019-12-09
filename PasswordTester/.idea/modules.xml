@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/PasswordTester.iml" filepath="$PROJECT_DIR$/PasswordTester.iml" />
+      <module fileurl="file://$PROJECT_DIR$/HashMaker.iml" filepath="$PROJECT_DIR$/HashMaker.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

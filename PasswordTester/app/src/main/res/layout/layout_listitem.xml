@@ -8,6 +8,15 @@
     android:padding="15dp">
 
     <TextView
+        android:id="@+id/hashTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
         android:id="@+id/hashValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
