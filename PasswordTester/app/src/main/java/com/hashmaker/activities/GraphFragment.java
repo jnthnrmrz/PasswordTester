@@ -14,6 +14,7 @@ import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.components.AxisBase;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
 import com.github.mikephil.charting.data.BarData;
 import com.github.mikephil.charting.data.BarDataSet;
 import com.github.mikephil.charting.data.BarEntry;
@@ -60,14 +61,27 @@ public class GraphFragment extends Fragment {
         }
 
 
-        BarDataSet dataSet = new BarDataSet(entries, "Time values in milliseconds");
-     //   dataSet.setColor(1);
-     //   dataSet.setValueTextColor(1);
+        BarDataSet dataSet = new BarDataSet(entries, "Time in milliseconds");
+
         BarData barData = new BarData(dataSet);
         barData.setBarWidth(0.9f);
         barChart.setData(barData);
         barChart.setFitBars(true);
+        barChart.setScaleXEnabled(false);
+
+        styleGraph(barChart);
+
         barChart.invalidate();
+
+
+
+    }
+
+    public void styleGraph(BarChart barChart) {
+        Description description = new Description();
+       // description.setText("Hash/Time Graph");
+        description.setEnabled(false);
+        barChart.setDescription(description);
 
         XAxis xAxis = barChart.getXAxis();
         //xAxis.setGranularity(1f);
@@ -75,18 +89,13 @@ public class GraphFragment extends Fragment {
         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
         xAxis.setTextSize(5f);
         xAxis.setTextColor(Color.BLUE);
+        xAxis.setDrawGridLines(false);
 
+        YAxis yAxisL = barChart.getAxisLeft();
+        YAxis yAxisR = barChart.getAxisRight();
 
-
-
-        styleGraph(barChart);
-
-    }
-
-    public void styleGraph(BarChart barChart) {
-        Description description = new Description();
-        description.setText("Hash/Time Graph");
-        barChart.setDescription(description);
+        yAxisL.setAxisMinimum(0f);
+        yAxisR.setAxisMinimum(0f);
     }
 
     ValueFormatter formatter = new ValueFormatter() {

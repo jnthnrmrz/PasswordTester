@@ -57,7 +57,7 @@ public class AdvancedHashing {
     private String hashPBKDF2(String password) {
         int iterations = 1000;
         char[] chars = password.toCharArray();
-        byte[] salt = new byte[100];
+        byte[] salt = new byte[10];
         long start, end;
 
         PBEKeySpec spec = new PBEKeySpec(chars, salt, iterations, 64 * 8);
@@ -71,7 +71,16 @@ public class AdvancedHashing {
 
             m_time = (end - start) / 1000000.0;
 
-            return hash.toString();
+            StringBuffer hexString = new StringBuffer();
+            for (int i=0; i< hash.length; i++) {
+                // hexString.append(Integer.toHexString(0xFF & messageDigest[i]));
+                String hex = Integer.toHexString(0xFF & hash[i]);
+                if(hex.length() == 1) {
+                    hexString.append('0');
+                }
+                hexString.append(hex);
+            }
+            return hexString.toString();
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
             return "hash failed";

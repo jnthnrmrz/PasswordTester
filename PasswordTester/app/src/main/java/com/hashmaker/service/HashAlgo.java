@@ -38,11 +38,18 @@ public class HashAlgo {
 
         //get the hash and time it takes.
         byte[] messageDigest = timedHash(password);
-
         // Create Hex String
         StringBuffer hexString = new StringBuffer();
-        for (int i=0; i<messageDigest.length; i++)
-            hexString.append(Integer.toHexString(0xFF & messageDigest[i]));
+        for (int i=0; i<messageDigest.length; i++) {
+            // hexString.append(Integer.toHexString(0xFF & messageDigest[i]));
+            String hex = Integer.toHexString(0xFF & messageDigest[i]);
+            if(hex.length() == 1) {
+                hexString.append('0');
+            }
+            hexString.append(hex);
+        }
+        Log.i("HashAlgo", "hash: " + hexString.toString());
+
         return hexString.toString();
 
     }
@@ -56,7 +63,6 @@ public class HashAlgo {
 
         //calculate the milliseconds it took to hash
         m_time = (endTime - startTime) / 1000000.0;
-        Log.i("HashAlgo", "startTime: " + startTime + "\nendTime: " + endTime + "\n actualTime: "+ m_time);
         byte messageDigest[] = m_digest.digest();
         return messageDigest;
     }
